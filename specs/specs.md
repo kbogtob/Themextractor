@@ -39,4 +39,11 @@ identification.
 
 ### Named entity recognition
 The Textrazor REST API has one simple call to whom you give a text and it returns a response object.
-This one 
+This one has multiple fields which can help us but we will only use the entities array.
+
+### Topic analysis
+#### Dbpedia
+#### Identifying the entities ressources
+#### Filtering the data (deambiguation)
+#### Graph based topic labelling
+
