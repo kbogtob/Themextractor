@@ -1,19 +1,26 @@
 var SemanticView = {
-	results: {},
-
 	hideWait: function() {
-		alert('Hiding waiting');
+		$('#wait-view').hide();
 	},
 
 	showWait: function() {
-		alert('Showing waiting');
+		$('#wait-view').show();
 	},
 
 	hideResults: function() {
-		alert('Hiding waiting');
+		$('#result-view').hide();
 	},
 
 	showResults: function() {
-		alert('Showing results');
+		$('#result-view').show();
+	},
+
+	formatResults: function(results) {
+		console.log('formatting results');
+		console.log(results);
+	},
+
+	showError: function(err) {
+		alert(err);
 	}
 };
