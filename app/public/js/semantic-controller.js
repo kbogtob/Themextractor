@@ -2,11 +2,16 @@ var SemanticController = {
 	PARSE_URL: '/parse',
 
 	Analyze: function(text, nb_concepts, callback) {
-		var result = {};
-		alert('sending text');
-
-		if (callback !== undefined)
-			callback(result);
+		$.ajax({
+			url: this.PARSE_URL,
+			type: 'POST',
+			data: {'text':text, 'nb_concepts': nb_concepts},
+			dataType: 'json',
+			success: callback,
+			fail: function() {
+				SemanticView.showError('Unknown error! Please retry.');
+			}
+		});
 	},
 
 	SendText: function(form) {
@@ -25,9 +30,14 @@ var SemanticController = {
 		return false;
 	},
 
-	ProcessResults: function(results) {
-		SemanticView.formatResults(results);
-		SemanticView.hideWait();
-		SemanticView.showResults();
+	ProcessResults: function(response) {
+		if (response !== undefined || response.concepts !== undefined) {
+			SemanticView.formatResults(response["concepts"]);
+			SemanticView.hideWait();
+			SemanticView.showResults();
+		}
+		else {
+			SemanticView.showError('Unknown error! Please retry.');
+		}
 	}
 };
