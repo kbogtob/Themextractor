@@ -13,7 +13,7 @@ class Application < Sinatra::Base
     end
 
     def javascripts
-      %w[lib/jquery.min lib/jquery-ui.min script].map do |path|
+      %w[lib/jquery.min lib/jquery-ui.min semantic-controller].map do |path|
         "<script src='/js/#{path}.js'></script>"
       end.join "\n"
     end
