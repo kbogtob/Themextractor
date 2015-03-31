@@ -21,7 +21,7 @@ module DBpedia
             
             solutions.map do |solution|
                 result = {}
-                labels.each { |label| result[label] = solution[label.to_sym].to_s }
+                labels.each { |label| result[label] = solution[label.to_sym] }
                 result
             end
         end

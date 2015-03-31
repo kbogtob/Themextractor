@@ -10,7 +10,7 @@ module DBpedia
     CLIENT = DBpedia::Client.new()
     
     def self.get_resource_uri(wiki_link)
-        RESSOURCE_BASE_URI + wiki_link.gsub(/.*\/(?<res>.*)/, '\k<res>')
+        RDF::URI.new(RESSOURCE_BASE_URI + wiki_link.gsub(/.*\/(?<res>.*)/, '\k<res>'))
     end
     
     def self.get_subjects_uri(resource_uri)

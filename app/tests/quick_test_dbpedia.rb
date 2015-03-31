@@ -15,7 +15,7 @@ end
 
 entities = [
     Entity.new('Nicolas Sarkozy', 'http://fr.wikipedia.org/wiki/Nicolas_Sarkozy'),
-    Entity.new('François Hollande', 'http://fr.wikipedia.org/wiki/François_Hollande'),
+    Entity.new('François Hollande', 'http://fr.wikipedia.org/wiki/Francois_Hollande'),
     Entity.new('Jacques Chirac', 'http://fr.wikipedia.org/wiki/Jacques_Chirac'),
     Entity.new('Paris', 'http://fr.wikipedia.org/wiki/Paris')
 ]
@@ -31,4 +31,4 @@ broaders = client.getResource(subjects.first[:label], {
 });
 
 DBpedia::get_subjects_uri('http://dbpedia.org/resource/Nicolas_Sarkozy')
-p DBpedia::get_resource_label('http://dbpedia.org/resource/Nicolas_Sarkozy')
+p DBpedia::get_resource_uri(entities[1].wiki_link)
