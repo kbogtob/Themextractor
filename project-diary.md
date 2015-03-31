@@ -23,6 +23,18 @@ My brain filled with these new knowledges, I'm still hesitating between using th
 
 Finally, I finished on doing the UML design diagram of the webapp. It includes the use of the textrazor API. But not the use of the DBpedia API. I'm thinking of using a small C++ application for this in order to stay perf-wise.
 
+###### 3rd day & 4th day (28-29/03): I was moving and I was way too tired to produce anything. But still thinking about solutions
+
+### 5th day (30/03):
+On this day, I finished my moving and worked on the text razor API. I build the client I had in mind using the textrazor gem as an inspiration. I tested it simply and moved on the dbpedia side. I documented myself on how it works and on how a sparql endpoint can be used. As I have only a short time, I thought of making one simple generic query to use the endpoint and fetch the data we need.
+
+### 6th day (31/03):
+Yesterday, I'm going forward on my usage of dbpedia to build an oriented knowledge graph and using the paper [1] to weight the nodes and select the concepts. As I have only a little time remaining, I'll try a ruby implementation instead of a C++ implementation. I may still be able to change my mind if it's way too long.
+
+I wrote one simple DBpedia client using the RDF Sparql client and tried to get the data to build the graph in a simple testcode file.
+
+I'm getting problems with special characters on the sparql endpoint. Problems which I don't experience on the "website" sparql virtuoso endpoint. (e.g. With the ç of François Hollande, it's finding results on the website but not through the API)
+
 ## Sources
 * [1] - "Unsupervised Graph-based Topic Labelling using DBpedia" by Ioana Hulpus, Conor Hayes, Marcel Karnstedt, Derek Greene - Digital Enterprise Research Institute & University College Dublin - Found at  http://aran.library.nuigalway.ie/xmlui/bitstream/handle/10379/4528/wsdm_noCopyright.pdf?sequence=1
 * [2] - WikipediaMiner - Toolkit for tapping the rich semantics encoded within Wikipedia by the University of Waikato - Found at http://wikipedia-miner.cms.waikato.ac.nz/
