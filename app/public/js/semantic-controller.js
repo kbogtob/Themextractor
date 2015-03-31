@@ -5,8 +5,9 @@ var SemanticController = {
 		$.ajax({
 			url: this.PARSE_URL,
 			type: 'POST',
-			data: {'text':text, 'nb_concepts': nb_concepts},
+			data: JSON.stringify({'text':text, 'nb_concepts': nb_concepts}),
 			dataType: 'json',
+			contentType: 'application/json',
 			success: callback,
 			fail: function() {
 				SemanticView.showError('Unknown error! Please retry.');

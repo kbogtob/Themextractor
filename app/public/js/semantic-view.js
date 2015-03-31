@@ -16,14 +16,21 @@ var SemanticView = {
 	},
 
 	formatResults: function(results) {
+		$('#result-view-table > tbody:last').html('');
 		if (results.length === 0) {
 			$('#result-view-table > tbody:last')
 				.append('<tr><td>0</td><td>None</td><td>0</td></tr>');
 		}
-
-		for (var i = 0; i < results.length; ++i) {
+		
+		var sorted = results.sort(function(a, b) {
+			if (a.score < b.score) return 1;
+			if (a.score > b.score) return -1;
+			return 0
+		});
+		
+		for (var i = 0; i < sorted.length; ++i) {
 			$('#result-view-table > tbody:last')
-				.append('<tr><td>'+ (i+1) +'</td><td>'+ results[i].name +'</td><td>'+ results[i].score +'</td></tr>');
+				.append('<tr><td>'+ (i+1) +'</td><td>'+ sorted[i].name +'</td><td>'+ sorted[i].score +'</td></tr>');
 		}
 	},
 

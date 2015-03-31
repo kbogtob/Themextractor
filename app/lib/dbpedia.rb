@@ -1,6 +1,8 @@
 require 'dbpedia/client'
 
 module DBpedia
+    RESSOURCE_BASE_URI = 'http://dbpedia.org/resource/'
+    
     SUBJECT_URI = 'http://purl.org/dc/terms/subject'
     BROADER_URI = 'http://www.w3.org/2004/02/skos/core#broader'
     LABEL_URI = 'http://www.w3.org/2000/01/rdf-schema#label'
@@ -8,7 +10,7 @@ module DBpedia
     CLIENT = DBpedia::Client.new()
     
     def self.get_resource_uri(wiki_link)
-        
+        RESSOURCE_BASE_URI + wiki_link.gsub(/.*\/(?<res>.*)/, '\k<res>')
     end
     
     def self.get_subjects_uri(resource_uri)
