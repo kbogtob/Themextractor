@@ -29,11 +29,13 @@ Finally, I finished on doing the UML design diagram of the webapp. It includes t
 On this day, I finished my moving and worked on the text razor API. I build the client I had in mind using the textrazor gem as an inspiration. I tested it simply and moved on the dbpedia side. I documented myself on how it works and on how a sparql endpoint can be used. As I have only a short time, I thought of making one simple generic query to use the endpoint and fetch the data we need.
 
 ### 6th day (31/03):
-Yesterday, I'm going forward on my usage of dbpedia to build an oriented knowledge graph and using the paper [1] to weight the nodes and select the concepts. As I have only a little time remaining, I'll try a ruby implementation instead of a C++ implementation. I may still be able to change my mind if it's way too long.
+Yesterday, I'm going forward on my usage of dbpedia to build an oriented knowledge graph and using the paper [1] to weight the nodes and select the concepts. As I have only a little time remaining, I'll try a ruby implementation instead of a C++ implementation. I may still be able to change my mind if it's way too slow.
 
 I wrote one simple DBpedia client using the RDF Sparql client and tried to get the data to build the graph in a simple testcode file.
 
-I'm getting problems with special characters on the sparql endpoint. Problems which I don't experience on the "website" sparql virtuoso endpoint. (e.g. With the ç of François Hollande, it's finding results on the website but not through the API)
+I developed the brain/business logic part using the ruby graph library (so I can view the graphs while debugging) and dbpedia to fill them. I'm working on the focused closeness centrality calculation right now.
+
+I'm getting problems with special characters on the sparql endpoint. Problems which I don't experience on the "website" sparql virtuoso endpoint. (e.g. With the ç of François Hollande, it's finding results on the website but not through the API) I decided to avoid this problem right now to focus on the business logic.
 
 ## Sources
 * [1] - "Unsupervised Graph-based Topic Labelling using DBpedia" by Ioana Hulpus, Conor Hayes, Marcel Karnstedt, Derek Greene - Digital Enterprise Research Institute & University College Dublin - Found at  http://aran.library.nuigalway.ie/xmlui/bitstream/handle/10379/4528/wsdm_noCopyright.pdf?sequence=1
