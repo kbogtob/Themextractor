@@ -37,6 +37,8 @@ I developed the brain/business logic part using the ruby graph library (so I can
 
 I'm getting problems with special characters on the sparql endpoint. Problems which I don't experience on the "website" sparql virtuoso endpoint. (e.g. With the ç of François Hollande, it's finding results on the website but not through the API) I decided to avoid this problem right now to focus on the business logic.
 
+P.S.: No perf issue of using the RGL library as it has native extensions.
+
 ## Sources
 * [1] - "Unsupervised Graph-based Topic Labelling using DBpedia" by Ioana Hulpus, Conor Hayes, Marcel Karnstedt, Derek Greene - Digital Enterprise Research Institute & University College Dublin - Found at  http://aran.library.nuigalway.ie/xmlui/bitstream/handle/10379/4528/wsdm_noCopyright.pdf?sequence=1
 * [2] - WikipediaMiner - Toolkit for tapping the rich semantics encoded within Wikipedia by the University of Waikato - Found at http://wikipedia-miner.cms.waikato.ac.nz/
