@@ -1,5 +1,6 @@
 require 'rgl/adjacency'
 require 'rgl/dot'
+require 'rgl/bellman_ford'
 
 module ThemeExtractor
     # This class computes the centrality of vertices on a RGL::DirectedEdgeGraph
@@ -32,19 +33,50 @@ module ThemeExtractor
         
         private
         def fcc
-            concepts = {}
+            centralities = {}
+            undirected_graph = @graph.to_undirected
+            edge_weights = {}
+            
+            # weight all the edges with the same weight
+            undirected_graph.edges.each { |edge|
+                src_to_tgt = [edge.source, edge.target]
+                tgt_to_src = [edge.target, edge.source]
+                edge_weights[src_to_tgt] = 1
+                edge_weights[tgt_to_src] = 1
+            }
+            
+            # foreach vertice
+            undirected_graph.vertices.each do |vertice|
+                # get the shortest paths to every vertice
+                shortest_paths = undirected_graph.bellman_ford_shortest_paths(
+                    edge_weights, 
+                    vertice
+                )
+                
+                # compute the average shortest path for the graph
+                avg = shortest_paths
+                        .values
+                        .map{|path| path.size}.reduce(:+) 
+                avg /= shortest_paths.values.size.to_f
+                
+                # compute the inverse of this average and this is the fcc score
+                centralities[vertice] = 1 / avg
+                puts "Centrality for #{vertice} is #{centralities[vertice]}"
+            end
+            
+            centralities
         end
         
         def fbc
-            concepts = {}
+            centralities = {}
         end
         
         def fic
-            concepts = {}
+            centralities = {}
         end
         
         def frwbc
-            concepts = {}
+            centralities = {}
         end
     end
 end

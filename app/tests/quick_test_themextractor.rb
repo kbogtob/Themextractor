@@ -17,6 +17,6 @@ entities.each do |entity|
     resources.push(DBpedia::get_resource_uri(entity.wiki_link))
 end
 
-ThemeExtractor::findTheme(entities)
+ThemeExtractor::find_theme(entities)
 
 

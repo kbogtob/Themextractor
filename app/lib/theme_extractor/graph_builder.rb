@@ -3,12 +3,12 @@ require 'dbpedia'
 require 'rgl/dot'
 
 module ThemeExtractor
-    attr_reader :graph
     
     # class building a graph from the resources it's build with
     # it use a method similar to the one used inside the kanopy framework
     # it goes through the subjects of the resources and then on the broader of the subjects
     class GraphBuilder
+        attr_reader :graph
         def initialize(resource_uris)
             @graph = RGL::DirectedAdjacencyGraph.new()
             
