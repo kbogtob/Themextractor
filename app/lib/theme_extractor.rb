@@ -14,7 +14,9 @@ module ThemeExtractor
 		resource_uris = entities.map do |entity|
 			DBpedia::get_resource_uri(entity.wiki_link)
 		end
-
-		graph = ThemeExtractor::GraphBuilder.new(resource_uris)
+		
+		graph = ThemeExtractor::GraphBuilder.new(resource_uris).graph
+		weighter = ThemeExtractor::WeightCalculator.new(graph)
+		
 	end
 end
