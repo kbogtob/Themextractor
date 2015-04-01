@@ -10,6 +10,7 @@ module ThemeExtractor
         FOCUSED_BETWEENNESS_CENTRALITY = 2
         FOCUSED_INFORMATION_CENTRALITY = 4
         FOCUSED_RANDOM_WALK_BETWEENNESS_CENTRALITY = 8
+        ADJACENT_VERTICE_COUNT = 16
         
         def initialize(graph)
             @graph = graph
@@ -26,6 +27,8 @@ module ThemeExtractor
                 fic
             elsif method == FOCUSED_RANDOM_WALK_BETWEENNESS_CENTRALITY
                 frwbc
+            elsif method == ADJACENT_VERTICE_COUNT
+                avct
             else
                 {}
             end
@@ -45,12 +48,13 @@ module ThemeExtractor
                 edge_weights[tgt_to_src] = 1
             }
             
+            # non optimized algorithm
             # foreach vertice
-            undirected_graph.vertices.each do |vertice|
+            undirected_graph.vertices.each do |vertex|
                 # get the shortest paths to every vertice
                 shortest_paths = undirected_graph.bellman_ford_shortest_paths(
                     edge_weights, 
-                    vertice
+                    vertex
                 )
                 
                 # compute the average shortest path for the graph
@@ -61,7 +65,7 @@ module ThemeExtractor
                 
                 # compute the inverse of this average and this is the fcc score
                 centralities[vertice] = 1 / avg
-                puts "Centrality for #{vertice} is #{centralities[vertice]}"
+                puts "Centrality for #{vertex} is #{centralities[vertex]}"
             end
             
             centralities
@@ -77,6 +81,24 @@ module ThemeExtractor
         
         def frwbc
             centralities = {}
+        end
+        
+        def avct
+            centralities = Hash.new(0)
+            # @graph.vertices.each do |vertex|
+            #     if vertex.start_with? "http://dbpedia.org/resource/Category:"
+            #         centralities[vertex] = @graph.adjacent_vertices(vertex).size
+            #     else
+            #         centralities[vertex] = 0 
+            #     end
+            # end
+            @graph.edges.each do |edge|
+                if edge.source.start_with? "http://dbpedia.org/resource/Category:"
+                    centralities[edge.source] += 1 
+                    centralities[edge.target] += 1 
+                end
+            end
+            centralities
         end
     end
 end

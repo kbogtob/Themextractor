@@ -36,6 +36,6 @@ module ThemeExtractor
 		
 		graph = ThemeExtractor::GraphBuilder.new(resource_uris).graph
 		weighter = ThemeExtractor::WeightCalculator.new(graph)
-		weighter.weighten(ThemeExtractor::WeightCalculator::FOCUSED_CLOSENESS_CENTRALITY)
+		weighter.weighten(ThemeExtractor::WeightCalculator::ADJACENT_VERTICE_COUNT)
 	end
 end
