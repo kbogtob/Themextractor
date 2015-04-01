@@ -37,6 +37,9 @@ I developed the brain/business logic part using the ruby graph library (so I can
 
 I'm getting problems with special characters on the sparql endpoint. Problems which I don't experience on the "website" sparql virtuoso endpoint. (e.g. With the ç of François Hollande, it's finding results on the website but not through the API) I decided to avoid this problem right now to focus on the business logic.
 
+### 7th day (1/04):
+Today, I made a few changes as we have a critical need of results and the focused centralities methods were way too long to compute on my server. I implemented a small empirical method weightening the vertices from their edges and it produces consistent results, even if there's still some noise on the results.
+
 P.S.: No perf issue of using the RGL library as it has native extensions.
 
 ## Sources
