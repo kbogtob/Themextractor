@@ -32,5 +32,9 @@ broaders = client.getResource(subjects.first[:label], {
 DBpedia::get_subjects_uri('http://dbpedia.org/resource/Nicolas_Sarkozy')
 DBpedia::get_resource_uri(entities[1].wiki_link)
 
-p DBpedia::get_resource_label(DBpedia::get_resource_uri(entities[1].wiki_link), 'en')
+DBpedia::get_resource_label(DBpedia::get_resource_uri(entities[1].wiki_link), 'en')
+
+p client.getSimilarRessource(DBpedia::get_resource_uri(entities[0].wiki_link), 
+DBpedia::get_resource_uri(entities[2].wiki_link), 
+'http://purl.org/dc/terms/subject')
 
