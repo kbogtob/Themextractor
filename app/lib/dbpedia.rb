@@ -25,9 +25,9 @@ module DBpedia
         })
     end
     
-    def self.get_resource_label(resource_uri)
+    def self.get_resource_label(resource_uri, lang)
         CLIENT.getResource(resource_uri, {
             label: LABEL_URI
-        })
+        }).reject { |literal| literal[:label].language != lang.to_sym }
     end
 end

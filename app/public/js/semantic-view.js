@@ -15,22 +15,13 @@ var SemanticView = {
 		$('#result-view').show();
 	},
 
-	formatResults: function(results) {
+	eraseResultLines: function() {
 		$('#result-view-table > tbody:last').html('');
-		if (results.length === 0) {
-			$('#result-view-table > tbody:last')
-				.append('<tr><td>0</td><td>None</td><td>0</td></tr>');
-		}
-		
-		var sorted = results.sort(function(a, b) {
-			if (a.score < b.score) return 1;
-			if (a.score > b.score) return -1;
-			return 0
-		});
-		
-		for (var i = 0; i < sorted.length; ++i) {
-			$('#result-view-table > tbody:last')
-				.append('<tr><td>'+ (i+1) +'</td><td>'+ sorted[i].name +'</td><td>'+ sorted[i].score +'</td></tr>');
+	},
+	
+	showLines: function(lines) {
+		for (var i = 0; i < lines.length; ++i) {
+			$('#result-view-table > tbody:last').append(lines[i]);
 		}
 	},
 
