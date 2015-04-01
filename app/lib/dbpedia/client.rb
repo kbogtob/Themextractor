@@ -25,5 +25,19 @@ module DBpedia
                 result
             end
         end
+        
+        def getSimilarRessource(resource_uri_a, resource_uri_b, on_tag_uri)
+            query = "select distinct ?similar where {\n"
+            query += "<#{resource_uri_a}> <#{on_tag_uri}> ?similar .\n"
+            query += "<#{resource_uri_b}> <#{on_tag_uri}> ?similar .\n"
+            query += "}"
+            
+            solutions = @client.query(query)
+            solutions ||= []
+            
+            solutions.map do |solution|
+                {similar: solution[:similar]}
+            end
+        end
     end
 end

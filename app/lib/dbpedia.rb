@@ -30,4 +30,8 @@ module DBpedia
             label: LABEL_URI
         }).reject { |literal| literal[:label].language != lang.to_sym }
     end
+    
+    def self.get_resources_similar_subjects_uri(resource_a, resource_b)
+        CLIENT.getSimilarRessource(resource_a, resource_b, SUBJECT_URI)
+    end
 end
